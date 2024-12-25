@@ -12,13 +12,11 @@ const socials = [
 ]
 const Socials = ({containerStyle, iconStyle}) => {
   return (
-  <>
+  <div className={containerStyle}>
   {socials.map((item, index) => {
-    return <div key={index} className="flex">
-        <Link href={item.path} className={iconStyle}>{item.icon}</Link>
-    </div>
+    return <Link key={index} href={item.path} className={iconStyle}>{item.icon}</Link>
   })}
-  </>
+  </div>
   )
 }
 
