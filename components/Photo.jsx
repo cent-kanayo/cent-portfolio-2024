@@ -20,7 +20,7 @@ const Photo = () => {
             fill
             alt="Chukwu Innocent's picture"
             quality={100}
-            className="block object-cover object-top rounded-full"
+            className="block  object-cover object-top rounded-full"
             />
         </motion.div>
         <motion.svg
@@ -38,7 +38,7 @@ const Photo = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{strokeDasharray: "24 10 0 0"}}
-            animate={{strokeDasharray: ["15 128 25 25", "4 250 22 22"], rotate: [120, 360]}}
+            animate={{strokeDasharray: ["15 128 25 25", "16 25 92 72  " ,"4 250 22 22"], rotate: [120, 360]}}
             transition={{
                 duration: 20, repeat: Infinity, repeatType: "reverse"
             }}
