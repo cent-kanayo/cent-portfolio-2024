@@ -1,16 +1,22 @@
+"use client";
 import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import {FiDownload} from "react-icons/fi"
+import {motion} from "framer-motion"
 
 export default function Home() {
   return (
-   <main className="container">
+   <motion.main initial={{opacity: 0}}
+   animate={{
+     opacity: 1,
+     transition: {delay: 2.4, duration: 0.4, ease: "easeIn"}
+   }} className="container">
     <section className="flex flex-col xl:flex-row items-center justify-between">
       <div className="text-center xl:text-left order-2 xl:order-none">
         <article className="mb-8">
-        <span>Softare Engineer</span>
+        <span>Software Engineer</span>
         <h1 className="h1 mb-2">Hello, I&apos;m <br /><span className="text-accent">Chukwu Innocent</span></h1>
         <p className="text-sm max-w-[500px]">I am a full-stack developer with hands-on experience in building real world solutions. I create custom WordPress Plugins and Themes to help clients achieve their needs</p>
         </article>
@@ -36,6 +42,6 @@ export default function Home() {
     <section className="mt-8">
       <Stats />
     </section>
-   </main>
+   </motion.main>
   );
 }

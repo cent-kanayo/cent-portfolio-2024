@@ -11,9 +11,9 @@ const Photo = () => {
         <motion.div 
         initial={{opacity: 0}} animate={{
             opacity: 1,
-            transition: {delay: 2, duration: 0.4, ease: "easeInOut "}
+            transition: {delay: 2, duration: 0.4, ease: "easeInOut"}
         }}
-        className="absolute w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten">
+        className="absolute w-[298px] h-[298px] xl:w-[398px] xl:h-[398px] mix-blend-lighten">
             <Image
             src="/assets/innocent.jpg"
             priority
@@ -24,7 +24,7 @@ const Photo = () => {
             />
         </motion.div>
         <motion.svg
-        className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]"
+        className="w-[300px] xl:w-[406px] h-[300px] xl:h-[406px]"
         fill="transparent"
         viewBox="0 0 506 506"
         xmlns="https://www.w3.org/2000/svg"

@@ -18,7 +18,7 @@ const services = [
   {
     num: "03",
     title: "Plugin Development",
-    description: "With the help of custom plugins, I help clients transform a static website into an enterprise level wep app.",
+    description: "With the help of custom plugins, I help clients transform a static website into an enterprise level web  app.",
     href: ""
   },
   {
