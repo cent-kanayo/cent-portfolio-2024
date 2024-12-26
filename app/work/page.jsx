@@ -35,7 +35,7 @@ const projects = [
       },
     ],
     image: "/assets/projects/twlanding.png",
-    live: "",
+    live: "https://techwriteable.com",
   },
   {
     num: "02",
@@ -58,8 +58,8 @@ const projects = [
       },
     ],
     image: "/assets/projects/cgpa.png",
-    live: "",
-    github: "hi",
+    live: "https://my-gpa.netlify.app/",
+    github: "https://github.com/cent-kanayo/cgpacalculator",
   },
   {
     num: "03",
@@ -69,10 +69,10 @@ const projects = [
     "A responsive and search engine optimized website for an organization Centre for Sustainable Housing and Development",
     stack: [
       {
-        name: "Next.js"
+        name: "Wordpress"
       },
       {
-        name: "TypeScript"
+        name: "Php"
       },
       {
         name: "Html 5"
@@ -82,8 +82,7 @@ const projects = [
       },
     ],
     image: "/assets/projects/chsd.png",
-    live: "",
-    github: "hi",
+    live: "https://chsdunilag.org",
   },
   {
     num: "04",
@@ -106,7 +105,7 @@ const projects = [
       },
     ],
     image: "/assets/projects/Silfrica.png",
-    live: "",
+    live: "https://silfrica.com",
   },
   {
     num: "05",
@@ -129,7 +128,7 @@ const projects = [
       },
     ],
     image: "/assets/projects/Metronome.png",
-    live: "",
+    live: "https://metronomeconsults.com",
   },
   {
     num: "06",
@@ -152,8 +151,8 @@ const projects = [
       },
     ],
     image: "/assets/projects/Github dashboard.png",
-    live: "",
-    github: "hi"
+    live: "https://githubuser-dashboardv1.netlify.app/",
+    github: "https://github.com/cent-kanayo/githubuser-dashboard"
   },
   {
     num: "07",
@@ -175,8 +174,8 @@ const projects = [
         name: "Css 3"
       },
     ],
-    image: "",
-    live: "",
+    image: "/assets/projects/ecommerce.png",
+    live: "https://community.techwriteable.com/courses",
   },
 ]
 const Work = () => {
@@ -227,7 +226,7 @@ const Work = () => {
                     </Tooltip>
                   </TooltipProvider>
                 </Link>
-                {projectsList.github && <Link href={projectsList.live}>
+                {projectsList.github && <Link href={projectsList.github}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
