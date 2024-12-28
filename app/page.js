@@ -22,7 +22,7 @@ export default function Home() {
         </article>
         <article className="flex flex-col xl:flex-row items-center gap-8">
           <Button variant="outline" className="flex items-center gap-2 uppercase">
-            <span>Download CV</span>
+            <a href="https://centcodes.com/assets/chukwu_innocent.pdf" download>Download CV</a>
             <span>
               <FiDownload className="text-xl"/>
             </span>
