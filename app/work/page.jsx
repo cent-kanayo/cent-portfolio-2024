@@ -204,9 +204,9 @@ const Work = () => {
               </div>
               <h2 className="h2 font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">{projectsList.category} project</h2>
               <p className="text-white/60">{projectsList.description}</p>
-              <ul className="flex gap-4">
+              <ul className="flex gap-4 flex-wrap">
                 {projectsList.stack.map((item, index) => {
-                  return <li key={index} className="text-accent text-xl">
+                  return <li key={index} className="text-accent text-xl whitespace-nowrap">
                       {item.name}
                       {index !== projectsList.stack.length - 1 && ","}
                   </li>
