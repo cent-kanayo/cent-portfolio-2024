@@ -7,6 +7,12 @@ import {FiDownload} from "react-icons/fi"
 import {motion} from "framer-motion"
 
 export default function Home() {
+    const downloadFile = (fileUrl, fileName) => {
+      const link = document.createElement("a");
+      link.href = fileUrl; // URL of the PDF file
+      link.download = fileName || "download.pdf"; // Default filename if not provided
+      link.click();
+    };
   return (
    <motion.main initial={{opacity: 0}}
    animate={{
@@ -21,8 +27,8 @@ export default function Home() {
         <p className="text-sm max-w-[500px]">I am a full-stack developer with hands-on experience in building real world solutions. I create custom WordPress Plugins and Themes to help clients achieve their needs</p>
         </article>
         <article className="flex flex-col xl:flex-row items-center gap-8">
-          <Button variant="outline" className="flex items-center gap-2 uppercase">
-            <a href="https://centcodes.com/assets/chukwu_innocent.pdf" download>Download CV</a>
+          <Button variant="outline" className="flex items-center gap-2 uppercase" onClick={() => downloadFile("http://www.centcodes.com/chukwu_innocent.pdf", "chukwu_innocent.pdf")}>
+            <span>Download CV</span>
             <span>
               <FiDownload className="text-xl"/>
             </span>
