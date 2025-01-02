@@ -94,11 +94,11 @@ const Contact = () => {
                 {error && <p style={{ color: "red" }}>Failed to send email</p>}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Input name="firstname" value={formData.firstname} onChange={handleChange} type="text" placeholder="Firstname" required/>
-                  <Input name="lastname" value={formData.lastname} onChange={handleChange}  type="text" placeholder="lastname"/>
-                  <Input name="email" value={formData.email} onChange={handleChange}  type="email" placeholder="Email"/>
-                  <Input name="phone" value={formData.phone} onChange={handleChange}  type="text" placeholder="Phone"/>
+                  <Input name="lastname" value={formData.lastname} onChange={handleChange}  type="text" placeholder="lastname" required/>
+                  <Input name="email" value={formData.email} onChange={handleChange}  type="email" placeholder="Email" required/>
+                  <Input name="phone" value={formData.phone} onChange={handleChange}  type="text" placeholder="Phone" required/>
                 </div>
-                <Select name="servicename" value={selectedValue} onValueChange={handleValueChange}>
+                <Select name="servicename" value={selectedValue} onValueChange={handleValueChange}required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a service"/>
                   </SelectTrigger>
@@ -114,7 +114,7 @@ const Contact = () => {
                     </SelectGroup>
                   </SelectContent>
                 </Select>
-                <Textarea name="message" value={formData.message} onChange={handleChange} className="h-[200px]" placeholder="Type your message"/>
+                <Textarea name="message" value={formData.message} onChange={handleChange} className="h-[200px]" placeholder="Type your message" required/>
                 <Button type="sumbit" className="max-w-40" size="md">Send message</Button>
               </form>
             </div>
