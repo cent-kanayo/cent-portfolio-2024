@@ -15,7 +15,7 @@ const Photo = () => {
         }}
         className="absolute w-[298px] h-[298px] xl:w-[398px] xl:h-[398px] mix-blend-lighten">
             <Image
-            src="/assets/innocent.jpg"
+            src="/image/chukwu-innocent.webp"
             priority
             fill
             alt="Chukwu Innocent's picture"
