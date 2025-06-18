@@ -24,7 +24,7 @@ export default function Home() {
         <article className="mb-8">
         <span>Software Engineer</span>
         <h1 className="h1 mb-2">Hello, I&apos;m <br /><span className="text-accent">Chukwu Innocent</span></h1>
-        <p className="text-sm max-w-[500px]">I am a full-stack developer with hands-on experience in building real world solutions. I create custom WordPress Plugins and Themes to help clients achieve their needs</p>
+        <p className="text-sm max-w-[500px]">I'm a full-stack web developer with extensive experience building custom WordPress plugins, scalable web applications, and dynamic frontends. I specialize in crafting tailored solutions using WordPress (plugins/themes), Node.js, Laravel, and React — with a focus on solving real-world problems for clients and startups. From logistics and affiliate platforms to job boards and tenant scoring systems, I bring a practical, problem-solving mindset to every project I work on.</p>
         </article>
         <article className="flex flex-col xl:flex-row items-center gap-8">
           <Button variant="outline" className="flex items-center gap-2 uppercase" onClick={() => downloadFile("http://www.centcodes.com/chukwu_innocent.pdf", "chukwu_innocent.pdf")}>
