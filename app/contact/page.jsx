@@ -1,28 +1,24 @@
 "use client"
-import {FaPhoneAlt, FaEnvelope, FaMapMarkedAlt} from "react-icons/fa"
-import {motion} from "framer-motion"
-import { Input } from "@/components/ui/input"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
+import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from "react-icons/fa"
+import { motion } from "framer-motion"
 import { useState } from "react"
-import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser"
 
 const info = [
   {
-    icon: <FaPhoneAlt/>,
+    icon: <FaPhoneAlt />,
     title: "Phone",
-    description: "(+234) 0906 545 7397"
+    description: "(+234) 0906 545 7397",
   },
   {
-    icon: <FaEnvelope/>,
+    icon: <FaEnvelope />,
     title: "Email",
-    description: "centkanayo@gmail.com"
+    description: "centkanayo@gmail.com",
   },
   {
-    icon: <FaMapMarkedAlt/>,
+    icon: <FaMapMarkedAlt />,
     title: "Location",
-    description: "Lagos, Nigeria"
+    description: "Lagos, Nigeria",
   },
 ]
 
@@ -33,107 +29,220 @@ const Contact = () => {
     email: "",
     phone: "",
     message: "",
-  });
+  })
 
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const [isSent, setIsSent] = useState(false);
-  const [error, setError] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("")
+  const [isSent, setIsSent] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-  const handleValueChange = (value) => {
-    setSelectedValue(value);
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {...formData, servicename: selectedValue}
+    e.preventDefault()
+    const data = { ...formData, servicename: selectedValue }
     emailjs
       .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID, 
-        process.env.NEXT_PUBLIC_TEMPLATE_ID, 
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
         data,
         process.env.NEXT_PUBLIC_API_PUBLIC_KEY
       )
       .then(
         (response) => {
-          setIsSent(true);
+          setIsSent(true)
           setError(false)
-          setFormData({ firstname: "", lastname: "", phone: "", email: "", message: "" });
+          setFormData({
+            firstname: "",
+            lastname: "",
+            phone: "",
+            email: "",
+            message: "",
+          })
           setSelectedValue("")
         },
         (err) => {
-          setError(true);
-          console.log(err);
-          
+          setError(true)
+          console.log(err)
         }
-      );
-  };
+      )
+  }
 
   return (
     <motion.section
-    initial={{opacity: 0}}
-    animate={
-      {opacity: 1, transition: {
-        delay: 2.4, duration: 0.4, ease: "easeIn"
-      }}}
-      className="py-6"
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { delay: 1.4, duration: 0.4, ease: "easeIn" },
+      }}
+      className="py-8"
     >
-      <div className="container mx-auto">
-        <article className="flex flex-col xl:flex-row gap-[30px]">
-            <div className="xl:w-[54%] order-2 xl:order-none">
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
-                <h3 className="text-4xl text-accent">Let's work together</h3>
-                <p className="text-white/60">
-                  Would you like us to have a detailed discussion? Send a message and I'll respond to you promptly.
-                </p>
-                {isSent && <p className="text-accent text-sm">Email sent successfully!</p>}
-                {error && <p style={{ color: "red" }}>Failed to send email</p>}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Input name="firstname" value={formData.firstname} onChange={handleChange} type="text" placeholder="Firstname" required/>
-                  <Input name="lastname" value={formData.lastname} onChange={handleChange}  type="text" placeholder="lastname" required/>
-                  <Input name="email" value={formData.email} onChange={handleChange}  type="email" placeholder="Email" required/>
-                  <Input name="phone" value={formData.phone} onChange={handleChange}  type="text" placeholder="Phone" required/>
+      <div className="border border-foreground/30">
+        <div className="border-b border-foreground/30 px-4 py-2 text-xs text-foreground/50 flex items-center gap-2">
+          <span className="text-foreground">$</span>
+          <span>./contact --send-message</span>
+          <span className="terminal-cursor" />
+        </div>
+
+        <div className="flex flex-col xl:flex-row gap-6 p-4 xl:p-6">
+          <div className="xl:w-[54%] order-2 xl:order-none">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-4 border border-foreground/20 p-4 xl:p-6"
+            >
+              <div className="text-xs text-foreground/50 mb-2">
+                {">"} Compose message
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs text-foreground/50 block mb-1">
+                    firstname
+                  </label>
+                  <input
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="type here..."
+                    required
+                    className="w-full bg-transparent border border-foreground/30 px-3 py-2 text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground"
+                  />
                 </div>
-                <Select name="servicename" value={selectedValue} onValueChange={handleValueChange}required>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a service"/>
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Select a service</SelectLabel>
-                      <SelectItem value="web-dev">Web Development</SelectItem>
-                      <SelectItem value="wordpress-dev">Wordpress Development</SelectItem>
-                      <SelectItem value="e-commerce dev">E-commerce Website</SelectItem>
-                      <SelectItem value="theme-dev">Custom Theme Developement</SelectItem>
-                      <SelectItem value="plugin-dev">Custom Plugin Development</SelectItem>
-                      <SelectItem value="it">IT services</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-                <Textarea name="message" value={formData.message} onChange={handleChange} className="h-[200px]" placeholder="Type your message" required/>
-                <Button type="sumbit" className="max-w-40" size="md">Send message</Button>
-              </form>
+                <div>
+                  <label className="text-xs text-foreground/50 block mb-1">
+                    lastname
+                  </label>
+                  <input
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="type here..."
+                    required
+                    className="w-full bg-transparent border border-foreground/30 px-3 py-2 text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-foreground/50 block mb-1">
+                    email
+                  </label>
+                  <input
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="type here..."
+                    required
+                    className="w-full bg-transparent border border-foreground/30 px-3 py-2 text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs text-foreground/50 block mb-1">
+                    phone
+                  </label>
+                  <input
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="type here..."
+                    required
+                    className="w-full bg-transparent border border-foreground/30 px-3 py-2 text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs text-foreground/50 block mb-1">
+                  service
+                </label>
+                <select
+                  value={selectedValue}
+                  onChange={(e) => setSelectedValue(e.target.value)}
+                  required
+                  className="w-full bg-transparent border border-foreground/30 px-3 py-2 text-sm text-foreground focus:outline-none focus:border-foreground"
+                >
+                  <option value="" disabled className="bg-primary">
+                    select a service...
+                  </option>
+                  <option value="web-dev" className="bg-primary">
+                    Web Development
+                  </option>
+                  <option value="wordpress-dev" className="bg-primary">
+                    WordPress Development
+                  </option>
+                  <option value="e-commerce dev" className="bg-primary">
+                    E-commerce Website
+                  </option>
+                  <option value="theme-dev" className="bg-primary">
+                    Custom Theme Development
+                  </option>
+                  <option value="plugin-dev" className="bg-primary">
+                    Custom Plugin Development
+                  </option>
+                  <option value="it" className="bg-primary">
+                    IT services
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs text-foreground/50 block mb-1">
+                  message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full bg-transparent border border-foreground/30 px-3 py-2 text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground h-[120px] resize-none"
+                  placeholder="type your message..."
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="border border-foreground px-4 py-2 text-sm text-foreground hover:bg-foreground hover:text-primary transition-colors self-start"
+              >
+                $ send
+              </button>
+
+              {isSent && (
+                <p className="text-xs text-foreground">
+                  {">"} Message sent successfully.
+                </p>
+              )}
+              {error && (
+                <p className="text-xs text-red-500">
+                  {">"} Failed to send. Check the console.
+                </p>
+              )}
+            </form>
+          </div>
+
+          <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-6 xl:mb-0">
+            <div className="text-xs text-foreground/50 mb-2">
+              {">"} cat ./contact.info
             </div>
-            <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
-              <ul className="flex flex-col gap-10">
-                {info.map((Item, index) => {
-                  return <li key={index} className="flex items-center gap-6">
-                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
-                      <span className="text-[28px]">{Item.icon}</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white/6o">{Item.title}</p>
-                      <h3 className="text-xl">{Item.description}</h3>
-                    </div>
-                  </li>
-                })}
-              </ul>
-            </div>
-        </article>
+            <ul className="flex flex-col gap-6 mt-2">
+              {info.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center gap-4 border-l-2 border-foreground/30 pl-4"
+                >
+                  <span className="text-foreground text-lg">{item.icon}</span>
+                  <div>
+                    <p className="text-xs text-foreground/50">{item.title}</p>
+                    <p className="text-sm text-foreground">{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </motion.section>
   )

@@ -3,31 +3,107 @@
 @tailwind utilities;
 
 :root {
-  --primaryColor: ;
+  --radius: 0;
 }
- 
 
 @layer base {
-  :root {
-    --radius:0.5rem;
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #00e676 #0a0a0a;
+  }
 
+  *::-webkit-scrollbar {
+    width: 6px;
   }
-  body{
-    @apply font-primary bg-primary text-white leading-loose;
+  *::-webkit-scrollbar-track {
+    background: #0a0a0a;
   }
-  .h1{
-    @apply text-[42px] xl:text-[64px] leading-[1.1] font-semibold
+  *::-webkit-scrollbar-thumb {
+    background: #00e676;
   }
-  .h2{
-    @apply text-[36px] xl:text-[42px] leading-[1.1] font-semibold
+
+  body {
+    @apply font-primary bg-primary text-foreground leading-relaxed;
   }
-  .h3{
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold
+
+  ::selection {
+    background: #00e676;
+    color: #0a0a0a;
   }
-.text-outline {
-  -webkit-text-stroke: 1px #ffffff;
+
+  .h1 {
+    @apply text-[42px] xl:text-[64px] leading-[1.1] font-semibold;
+  }
+  .h2 {
+    @apply text-[36px] xl:text-[42px] leading-[1.1] font-semibold;
+  }
+  .h3 {
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+  }
 }
-.text-outline-hover {
-  -webkit-text-stroke: 1px #00ff99;
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes bootIn {
+  0% { opacity: 0; filter: brightness(4); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(0, 230, 118, 0.3); }
+  50% { box-shadow: 0 0 12px rgba(0, 230, 118, 0.5); }
+}
+
+.terminal-cursor::after {
+  content: "█";
+  animation: blink 1s step-end infinite;
+  color: #00e676;
+  margin-left: 2px;
+}
+
+.terminal-glow {
+  text-shadow: 0 0 8px rgba(0, 230, 118, 0.4);
+}
+
+.terminal-border {
+  border: 1px solid #00e676;
+}
+
+.terminal-border-b {
+  border-bottom: 1px solid #00e676;
+}
+
+.terminal-border-t {
+  border-top: 1px solid #00e676;
+}
+
+.scanlines::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 230, 118, 0.015) 2px,
+    rgba(0, 230, 118, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+::selection {
+  background: #00e676;
+  color: #0a0a0a;
 }

@@ -1,17 +1,17 @@
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
 const Textarea = React.forwardRef(({ className, ...props }, ref) => {
   return (
-    (<textarea
+    <textarea
       className={cn(
-        "flex min-h-[80px] w-full rounded-md border border-white/10 bg-primary px-4 py-5 text-base placeholder:text-white/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50",
+        "flex min-h-[80px] w-full border border-foreground/30 bg-transparent px-3 py-2 text-sm text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-foreground resize-none",
         className
       )}
       ref={ref}
-      {...props} />)
-  );
+      {...props}
+    />
+  )
 })
 Textarea.displayName = "Textarea"
 

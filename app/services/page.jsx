@@ -1,60 +1,88 @@
-"use client";
-import {BsArrowDownRight} from "react-icons/bs"
-import {motion} from "framer-motion"
+"use client"
+import { motion } from "framer-motion"
 import Link from "next/link"
+
 const services = [
   {
     num: "01",
     title: "Full-Stack Development",
-    description: "I help business streamline and automate processes using cutting edge technologies while implementing industry best practices.",
-    href: ""
+    description:
+      "I help businesses streamline and automate processes using cutting edge technologies while implementing industry best practices.",
   },
   {
     num: "02",
     title: "WordPress Development",
-    description: "I design visually appealing and performant WordPress websites for clients. I also develop and customize custom WordPress themes to suit specific client neeeds.",
-    href: ""
+    description:
+      "I design visually appealing and performant WordPress websites. I also develop and customize custom WordPress themes to suit specific client needs.",
   },
   {
     num: "03",
     title: "Plugin Development",
-    description: "With the help of custom plugins, I help clients transform a static website into an enterprise level web  app.",
-    href: ""
+    description:
+      "With custom plugins, I help clients transform a static website into an enterprise level web app.",
   },
   {
     num: "04",
     title: "IT Admin Services",
-    description: "I provide general IT administration functions, from setting up servers on Cpanel or Cloud platforms, domain regitrations and DNS configurations.",
-    href: ""
+    description:
+      "I provide general IT administration functions, from setting up servers on Cpanel or Cloud platforms, domain registrations and DNS configurations.",
   },
 ]
+
 const Services = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
-      <div className="container mx-auto">
-        <motion.div 
-        initial={{opacity: 0}}
-        animate={{opacity: 1, transition: {
-          delay: 2.4, duration: 0.4, ease: "easeIn"
-        }}}
-        className="grid grid-cols-1 md:grid-cols-2 gap-[60px] "
-        >
-          {services.map((service, index) =>{
-            return <div key={index} className="flex-1 flex-col justify-center gap-6 group"> 
-              <article className="w-full flex justify-between items-center">
-                <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">{service.num}</div>
-                <Link href={service.href} className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45">
-                <BsArrowDownRight className="text-primary text-3xl"/>
-                </Link>
-              </article>
-               <h2 className="h2 font-bold leading-none text-white group-hover:text-accent transition-all duration-500 my-2">{service.title}</h2>
-               <p className="text-white/60">{service.description}</p>
-               <div className="border-b border-white/20 w-full" />
-            </div>
-          })}
-        </motion.div>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { delay: 1.4, duration: 0.4, ease: "easeIn" },
+      }}
+      className="min-h-[80vh] py-8"
+    >
+      <div className="border border-foreground/30">
+        <div className="border-b border-foreground/30 px-4 py-2 text-xs text-foreground/50 flex items-center gap-2">
+          <span className="text-foreground">$</span>
+          <span>ls ./services/</span>
+          <span className="terminal-cursor" />
+        </div>
+
+        <div className="p-4 xl:p-6">
+          <div className="text-xs text-foreground/50 mb-6">
+            {">"} Available services (4)
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="border border-foreground/20 p-4 hover:border-foreground/60 transition-colors"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-3xl font-bold text-foreground/20">
+                    {service.num}
+                  </span>
+                  <span className="text-xs text-foreground/30">./{service.num}</span>
+                </div>
+                <h2 className="text-lg font-bold text-foreground mb-2">
+                  {service.title}
+                </h2>
+                <p className="text-sm text-foreground/60 leading-relaxed">
+                  {service.description}
+                </p>
+                <div className="mt-3 border-t border-foreground/10 pt-2">
+                  <Link
+                    href="/contact"
+                    className="text-xs text-foreground/50 hover:text-foreground underline underline-offset-2"
+                  >
+                    $ request this service
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

@@ -1,56 +1,47 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
-import StairEffect from "@/components/StairEffect";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrainsMono-sans",
   subsets: ["latin"],
-  weight: ["100", "200" ,"300", "400", "500", "600", "700", "800"]
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
-
-
-
 export const metadata = {
-  title: "Chukwu Innocent | Software engineer | Fitness and Sports Writer",
-  description: "Chukwu Innocent is an experienced software engineer with proficiency in enterprise software development. I build custom Wordpress plugins and themes that suits my clients needs.",
-  openGraph:{
+  title: "Chukwu Innocent | Full-Stack Developer",
+  description:
+    "Full-stack developer specializing in TypeScript, Node.js, Golang, PHP, and React. Building scalable backend systems with 4+ years of experience.",
+  openGraph: {
     url: "centcodes.com",
-    title: "Chukwu Innocent | Software engineer | Fitness and Sports Writer",
-    description: "Chukwu Innocent is an experienced software engineer with proficiency in enterprise software development. I build custom Wordpress plugins and themes that suits my clients needs.",
+    title: "Chukwu Innocent | Full-Stack Developer",
+    description:
+      "Full-stack developer specializing in TypeScript, Node.js, Golang, PHP, and React.",
     siteName: "CentCodes",
     images: [
       {
         url: "https://www.centcodes.com/image/chukwu-innocent.webp",
-        alt: "Chukwu Innocent | Software engineer | Fitness and Sports Writer"
-      }
-    ]
+        alt: "Chukwu Innocent | Full-Stack Developer",
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Chukwu Innocent | Software engineer | Fitness and Sports Writer",
-    description: "Chukwu Innocent is an experienced software engineer with proficiency in enterprise software development. I build custom Wordpress plugins and themes that suits my clients needs.",
-    creator: 'CentCodes',
-    creatorId: '1467726470533754880',
-    images: ['https://www.centcodes.com/image/chukwu-innocent.webp'], // Must be an absolute URL
+    card: "summary_large_image",
+    title: "Chukwu Innocent | Full-Stack Developer",
+    description:
+      "Full-stack developer specializing in TypeScript, Node.js, Golang, PHP, and React.",
+    creator: "CentCodes",
+    creatorId: "1467726470533754880",
+    images: ["https://www.centcodes.com/image/chukwu-innocent.webp"],
   },
-}
+};
 
 export default function RootLayout({ children }) {
-  
-  
   return (
     <html lang="en">
-      <body
-        className={`${jetBrainsMono.variable}`}
-      >
-        <Header/>
-        <StairEffect/>
-        <PageTransition>
-        {children}
-        </PageTransition>
+      <body className={`${jetBrainsMono.variable} scanlines`}>
+        <Header />
+        <main className="container mx-auto px-4">{children}</main>
       </body>
     </html>
   );
